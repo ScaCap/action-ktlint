@@ -10,11 +10,13 @@ to enforce best practices.
 
 By default, with `reporter: github-pr-check` an annotation is added to
 the line:
+![Example comment made by the action, with github-pr-check](./github-pr-check.png)
 
 ### With `github-pr-review`
 
 With `reporter: github-pr-review` a comment is added to
 the Pull Request Conversation:
+![Example comment made by the action, with github-pr-review](./github-pr-review.png)
 
 ## Inputs
 
