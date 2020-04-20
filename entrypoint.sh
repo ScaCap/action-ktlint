@@ -1,4 +1,5 @@
 #!/bin/sh
+set -o pipefail
 
 cd "$GITHUB_WORKSPACE"
 
