@@ -35,6 +35,11 @@ The default is `error`.
 Optional. Reporter of reviewdog command [`github-pr-check`,`github-pr-review`].
 The default is `github-pr-check`.
 
+### `fail_on_error`
+
+Optional. Fails the current check if any error was found [`true`/`false`]
+The default value is false.
+
 ## Example usage
 
 ```yml
