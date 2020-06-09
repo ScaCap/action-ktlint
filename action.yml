@@ -16,6 +16,12 @@ inputs:
       Default is github-pr-check.
     required: false
     default: 'github-pr-check'
+  fail_on_error:
+    description: |
+      Fails the current check if any error was found [true/false]
+      Default is false.
+    required: false
+    default: 'false'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -23,6 +29,7 @@ runs:
     - ${{ inputs.github_token }}
     - ${{ inputs.level }}
     - ${{ inputs.reporter }}
+    - ${{ inputs.fail_on_error }}
 branding:
   icon: 'edit'
   color: 'blue'
