@@ -22,6 +22,10 @@ inputs:
       Default is false.
     required: false
     default: 'false'
+  android:
+    description: Run KtLint with Android Kotlin Style Guide
+    required: false
+    default: 'false'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -30,6 +34,7 @@ runs:
     - ${{ inputs.level }}
     - ${{ inputs.reporter }}
     - ${{ inputs.fail_on_error }}
+    - ${{ inputs.android }}
 branding:
   icon: 'edit'
   color: 'blue'
