@@ -5,7 +5,11 @@ RUN apk --no-cache --update add git curl openjdk11 \
 
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/
 
-RUN curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.36.0/ktlint \
+RUN curl -s https://api.github.com/repos/pinterest/ktlint/releases/latest \
+    | grep "browser_download_url.*ktlint\"" \
+    | cut -d : -f 2,3 \
+    | tr -d \" \
+    | wget -qi -\
     && chmod a+x ktlint \
     && mv ktlint /usr/local/bin/
 
