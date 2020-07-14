@@ -45,6 +45,11 @@ The default value is false.
 Optional. Print files relative to the working directory [`true`/`false`]
 The default value is false.
 
+### `android`
+
+Optional. Runs KtLint with [Android Kotlin Style Guide](https://android.github.io/kotlin-guides/style.html) [`true`/`false`]
+The default value is false.
+
 ## Example usage
 
 ```yml

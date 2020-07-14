@@ -26,6 +26,10 @@ inputs:
     description: Print files relative to the working directory
     required: false
     default: 'false'
+  android:
+    description: Run KtLint with Android Kotlin Style Guide
+    required: false
+    default: 'false'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -35,6 +39,7 @@ runs:
     - ${{ inputs.reporter }}
     - ${{ inputs.fail_on_error }}
     - ${{ inputs.relative }}
+    - ${{ inputs.android }}
 branding:
   icon: 'edit'
   color: 'blue'
