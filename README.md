@@ -43,7 +43,7 @@ The default value is false.
 ### `relative`
 
 Optional. Print files relative to the working directory [`true`/`false`]
-The default value is false.
+The default value is true.
 
 ### `android`
 

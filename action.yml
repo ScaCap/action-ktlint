@@ -25,7 +25,7 @@ inputs:
   relative:
     description: Print files relative to the working directory
     required: false
-    default: 'false'
+    default: 'true'
   android:
     description: Run KtLint with Android Kotlin Style Guide
     required: false
