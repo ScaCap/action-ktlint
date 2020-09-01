@@ -43,6 +43,15 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.github_token }}
+    - ${{ inputs.level }}
+    - ${{ inputs.reporter }}
+    - ${{ inputs.fail_on_error }}
+    - ${{ inputs.filter_mode }}
+    - ${{ inputs.relative }}
+    - ${{ inputs.android }}
+    - ${{ inputs.ktlint_version }}
 branding:
   icon: 'edit'
   color: 'blue'
