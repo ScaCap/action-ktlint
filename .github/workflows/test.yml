@@ -15,7 +15,7 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-check
           level: error
-          ktlint_version: 0.37.2
+          ktlint_version: 0.36.0
 
   test-pr-check:
     if: github.event_name == 'pull_request'

@@ -1,6 +1,8 @@
 #!/bin/sh
 
-curl -sSL https://api.github.com/repos/pinterest/ktlint/releases/"$INPUT_KTLINT_VERSION" \
+echo ktlint version: "${INPUT_KTLINT_VERSION}"
+
+curl -sSL https://api.github.com/repos/pinterest/ktlint/releases/"${INPUT_KTLINT_VERSION}" \
     | grep "browser_download_url.*ktlint\"" \
     | cut -d : -f 2,3 \
     | tr -d \" \
