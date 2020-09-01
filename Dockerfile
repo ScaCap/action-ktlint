@@ -10,7 +10,7 @@ RUN apk --no-cache --update add git curl wget openjdk11 \
 
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 
-RUN curl -sSL https://api.github.com/repos/pinterest/ktlint/releases/"$INPUT_KTLINT_VERSION" \
+RUN curl -sSL https://api.github.com/repos/pinterest/ktlint/releases/${INPUT_KTLINT_VERSION} \
     | grep "browser_download_url.*ktlint\"" \
     | cut -d : -f 2,3 \
     | tr -d \" \
