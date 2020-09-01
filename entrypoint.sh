@@ -2,7 +2,6 @@
 
 export RELATIVE=
 export ANDROID=
-export KTLINT_RELEASE=
 
 if [ "$INPUT_KTLINT_VERSION" = "latest" ] ; then
   curl -sSL https://api.github.com/repos/pinterest/ktlint/releases/latest \
