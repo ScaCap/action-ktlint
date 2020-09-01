@@ -1,8 +1,8 @@
 FROM alpine:3.12
 
-ARG INPUT_KTLINT_VERSION
-
 ENV REVIEWDOG_VERSION=v0.10.2
+
+RUN echo "$INPUT_KTLINT_VERSION"
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 
