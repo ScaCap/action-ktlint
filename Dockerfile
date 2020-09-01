@@ -2,8 +2,6 @@ FROM alpine:3.12
 
 ENV REVIEWDOG_VERSION=v0.10.2
 
-RUN echo "$INPUT_KTLINT_VERSION"
-
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 
 RUN apk --no-cache --update add git curl wget openjdk11 \
