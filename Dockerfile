@@ -1,10 +1,9 @@
 FROM alpine:3.12
 
+ARG INPUT_KTLINT_VERSION="latest"
 ENV REVIEWDOG_VERSION=v0.10.2
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
-
-RUN echo "$INPUT_KTLINT_VERSION"
 
 RUN apk --no-cache --update add git curl wget openjdk11 \
     && rm -rf /var/cache/apk/*
