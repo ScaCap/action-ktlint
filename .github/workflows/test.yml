@@ -1,0 +1,44 @@
+name: Test
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+jobs:
+  test-check:
+    name: runner / ktlint (github-check)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-check
+          level: info
+          ktlint_version: 0.37.2
+
+  test-pr-check:
+    if: github.event_name == 'pull_request'
+    name: runner / ktlint (github-pr-check)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-check
+          level: warning
+          fail_on_error: true
+
+  test-pr-review:
+    if: github.event_name == 'pull_request'
+    name: runner / ktlint (github-pr-review)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          level: error
+          relative: true

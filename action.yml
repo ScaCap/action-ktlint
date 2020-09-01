@@ -12,14 +12,20 @@ inputs:
     default: 'error'
   reporter:
     description: |
-      Reporter of reviewdog command [github-pr-check,github-pr-review].
+      Reporter of reviewdog command [github-pr-check,github-check,github-pr-review].
       Default is github-pr-check.
     required: false
     default: 'github-pr-check'
+  filter_mode:
+    description: |
+      Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
+      Default is added.
+    required: false
+    default: 'added'
   fail_on_error:
     description: |
-      Fails the current check if any error was found [true/false]
-      Default is false.
+      Exit code for reviewdog when errors are found [true,false]
+      Default is `false`.
     required: false
     default: 'false'
   relative:
@@ -27,9 +33,13 @@ inputs:
     required: false
     default: 'true'
   android:
-    description: Run KtLint with Android Kotlin Style Guide
+    description: Run Ktlint with Android Kotlin Style Guide
     required: false
     default: 'false'
+  ktlint_version:
+    description: Defines the ktlint version to use
+    required: false
+    default: 'latest'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -38,8 +48,10 @@ runs:
     - ${{ inputs.level }}
     - ${{ inputs.reporter }}
     - ${{ inputs.fail_on_error }}
+    - ${{ inputs.filter_mode }}
     - ${{ inputs.relative }}
     - ${{ inputs.android }}
+    - ${{ inputs.ktlint_version }}
 branding:
   icon: 'edit'
   color: 'blue'
