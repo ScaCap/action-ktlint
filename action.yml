@@ -30,6 +30,10 @@ inputs:
     description: Run KtLint with Android Kotlin Style Guide
     required: false
     default: 'false'
+  baseline:
+    description: Use a baseline configuration
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -40,6 +44,7 @@ runs:
     - ${{ inputs.fail_on_error }}
     - ${{ inputs.relative }}
     - ${{ inputs.android }}
+    - ${{ inputs.baseline }}
 branding:
   icon: 'edit'
   color: 'blue'
