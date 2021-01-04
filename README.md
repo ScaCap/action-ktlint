@@ -50,6 +50,10 @@ The default value is true.
 Optional. Runs KtLint with [Android Kotlin Style Guide](https://android.github.io/kotlin-guides/style.html) [`true`/`false`]
 The default value is false.
 
+### `baseline`
+
+Optional. Runs checks against the baseline file provided.
+
 ## Example usage
 
 ```yml
