@@ -40,6 +40,10 @@ The default is `github-pr-check`.
 Optional. Fails the current check if any error was found [`true`/`false`]
 The default value is false.
 
+### `filter_mode`
+Optional. Filter mode of reviewdog command [`added`,`diff_context`,`file`,`nofilter`]
+Default is `added`.
+
 ### `relative`
 
 Optional. Print files relative to the working directory [`true`/`false`]
