@@ -30,4 +30,3 @@ jobs:
           branch: depup/reviewdog
           base: master
           labels: "bump:minor"
-          
