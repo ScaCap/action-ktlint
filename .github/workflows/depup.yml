@@ -4,7 +4,6 @@ on:
     - cron:  '14 14 * * *' # Runs at 14:14 UTC every day
   repository_dispatch:
     types: [depup]
-  workflow_dispatch:
 
 jobs:
   reviewdog:
@@ -19,7 +18,7 @@ jobs:
           repo: reviewdog/reviewdog
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v2
+        uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: "chore(deps): update reviewdog to ${{ steps.depup.outputs.latest }}"
@@ -31,3 +30,4 @@ jobs:
           branch: depup/reviewdog
           base: master
           labels: "bump:minor"
+          
