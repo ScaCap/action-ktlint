@@ -3,8 +3,18 @@
 export RELATIVE=
 export ANDROID=
 
-if [ "$INPUT_FAIL_ON_ERROR" = true ] ; then
-  set -o pipefail
+if [ "$INPUT_KTLINT_VERSION" = "latest" ] ; then
+  curl -sSL https://api.github.com/repos/pinterest/ktlint/releases/latest \
+    | grep "browser_download_url.*ktlint\"" \
+    | cut -d : -f 2,3 \
+    | tr -d \" \
+    | wget -qi -\
+    && chmod a+x ktlint \
+    && mv ktlint /usr/local/bin/
+else
+  curl -sSLO https://github.com/pinterest/ktlint/releases/download/"${INPUT_KTLINT_VERSION}"/ktlint \
+    && chmod a+x ktlint \
+    && mv ktlint /usr/local/bin/
 fi
 
 if [ "$INPUT_RELATIVE" = true ] ; then
@@ -19,6 +29,12 @@ cd "$GITHUB_WORKSPACE"
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-echo KtLint version: "$(ktlint --version)"
+echo ktlint version: "$(ktlint --version)"
+
 ktlint --reporter=checkstyle $RELATIVE $ANDROID \
-  | reviewdog -f=checkstyle -name="ktlint" -reporter="${INPUT_REPORTER}" -filter-mode="${INPUT_FILTER_MODE}" -level="${INPUT_LEVEL}"
+  | reviewdog -f=checkstyle \
+    -name="ktlint" \
+    -reporter="${INPUT_REPORTER}" \
+    -level="${INPUT_LEVEL}" \
+    -filter-mode="${INPUT_FILTER_MODE}" \
+    -fail-on-error="${INPUT_FAIL_ON_ERROR}"
