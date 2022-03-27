@@ -32,13 +32,25 @@ The default is `error`.
 
 ### `reporter`
 
-Optional. Reporter of reviewdog command [`github-pr-check`,`github-pr-review`].
+Optional. Reporter of reviewdog command [`github-pr-check`,`github-pr-review`, `github-check`].
 The default is `github-pr-check`.
+
+See reviewdog reporters [documentation](https://github.com/reviewdog/reviewdog/tree/master#exit-codes) 
+for more details on their functionality.
+
+### `filter_mode`
+
+Optional. Filtering for the reviewdog command [`added`,`diff_context`,`file`,`nofilter`].
+The default is `added`.
+
+See reviewdog filter mode [documentation](https://github.com/reviewdog/reviewdog/tree/master#filter-mode) for more details.
 
 ### `fail_on_error`
 
-Optional. Fails the current check if any error was found [`true`/`false`]
-The default value is false.
+Optional. Exit code for reviewdog when errors are found [`true`,`false`] 
+Default is false.
+
+See reviewdog fail on error [documentation](https://github.com/reviewdog/reviewdog/tree/master#exit-codes) for more details.
 
 ### `relative`
 
@@ -53,6 +65,11 @@ The default value is false.
 ### `baseline`
 
 Optional. Runs checks against the baseline file provided.
+
+### `ktlint_version`
+
+Optional. Defines the [ktlint](https://ktlint.github.io/) version to use.
+The default value is `latest`.
 
 ## Example usage
 
