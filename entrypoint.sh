@@ -27,6 +27,8 @@ fi
 
 cd "$GITHUB_WORKSPACE"
 
+git config --global --add safe.directory $GITHUB_WORKSPACE
+
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 echo ktlint version: "$(ktlint --version)"
