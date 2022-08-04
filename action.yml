@@ -44,6 +44,10 @@ inputs:
     description: Defines the ktlint version to use
     required: false
     default: 'latest'
+  file_glob:
+    description: Optionally defines a file glob to identify files to be checked
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
