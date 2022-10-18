@@ -44,6 +44,10 @@ inputs:
     description: Defines the ktlint version to use
     required: false
     default: 'latest'
+  name:
+    description: Reviewdog report name
+    required: false
+    default: 'ktlint'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -57,6 +61,7 @@ runs:
     - ${{ inputs.android }}
     - ${{ inputs.baseline }}
     - ${{ inputs.ktlint_version }}
+    - ${{ inputs.name }}
 branding:
   icon: 'edit'
   color: 'blue'
