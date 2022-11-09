@@ -38,7 +38,7 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 echo ktlint version: "$(ktlint --version)"
 
-ktlint --reporter=checkstyle $RELATIVE $ANDROID $BASELINE \
+ktlint --reporter=checkstyle $RELATIVE $ANDROID $BASELINE $INPUT_FILE_GLOB \
   | reviewdog -f=checkstyle \
     -name="ktlint" \
     -reporter="${INPUT_REPORTER}" \
