@@ -6,12 +6,13 @@ export BASELINE=
 
 if [ "$INPUT_KTLINT_VERSION" = "latest" ]; then
   echo "Downloading latest..."
-  url=$(curl -L https://api.github.com/repos/pinterest/ktlint/releases/latest | grep "browser_download_url.*ktlint\"")
+  content=$(curl -L https://api.github.com/repos/pinterest/ktlint/releases/latest | grep "browser_download_url.*ktlint\"")
+  echo "$content"
+  url=$(echo "$content" | grep "browser_download_url.*ktlint\"")
   echo "url: ${url}"
-  echo "$url" |
-    cut -d : -f 2,3 |
-    tr -d \" |
-    wget -i -
+  cleaned="$(echo "$url" | cut -d : -f 2,3 | tr -d \")"
+  echo "cleaned: $cleaned"
+  echo "$cleaned" | wget -i -
   chmod a+x ktlint
   mv ktlint /usr/local/bin/
   echo "Done downloading."
