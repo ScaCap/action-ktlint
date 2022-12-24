@@ -10,7 +10,7 @@ if [ "$INPUT_KTLINT_VERSION" = "latest" ]; then
     grep "browser_download_url.*ktlint\"" |
     cut -d : -f 2,3 |
     tr -d \" |
-    wget -qi -
+    wget -i -
   chmod a+x ktlint
   mv ktlint /usr/local/bin/
   echo "Done downloading."
