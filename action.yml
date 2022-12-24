@@ -61,6 +61,7 @@ runs:
     - ${{ inputs.android }}
     - ${{ inputs.baseline }}
     - ${{ inputs.ktlint_version }}
+    - ${{ secrets.GITHUB_TOKEN }}
 branding:
   icon: 'edit'
   color: 'blue'
