@@ -16,7 +16,7 @@ if [ "$INPUT_KTLINT_VERSION" = "latest" ]; then
   mv ktlint /usr/local/bin/
   echo "Done downloading."
 else
-  curl -LO https://github.com/pinterest/ktlint/releases/download/"${INPUT_KTLINT_VERSION}"/ktlint &&
+  curl -sSLO https://github.com/pinterest/ktlint/releases/download/"${INPUT_KTLINT_VERSION}"/ktlint &&
     chmod a+x ktlint &&
     mv ktlint /usr/local/bin/
 fi
