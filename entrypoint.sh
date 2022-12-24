@@ -6,7 +6,7 @@ export BASELINE=
 
 if [ "$INPUT_KTLINT_VERSION" = "latest" ]; then
   echo "Downloading latest..."
-  content=$(curl -L https://api.github.com/repos/pinterest/ktlint/releases/latest --header "authorization: Bearer ${SECRETS_GITHUB_TOKEN}")
+  content=$(curl -L https://api.github.com/repos/pinterest/ktlint/releases/latest --header "authorization: Bearer ${INPUT_GITHUB_TOKEN}")
   echo "$content"
   url=$(echo "$content" | grep "browser_download_url.*ktlint\"")
   echo "url: ${url}"
