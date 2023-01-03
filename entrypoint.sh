@@ -40,7 +40,7 @@ echo ktlint version: "$(ktlint --version)"
 
 ktlint --reporter=checkstyle $RELATIVE $ANDROID $BASELINE $INPUT_FILE_GLOB |
   reviewdog -f=checkstyle \
-    -name="ktlint" \
+    -name="${INPUT_NAME}" \
     -reporter="${INPUT_REPORTER}" \
     -level="${INPUT_LEVEL}" \
     -filter-mode="${INPUT_FILTER_MODE}" \
