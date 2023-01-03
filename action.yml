@@ -48,6 +48,10 @@ inputs:
     description: Reviewdog report name
     required: false
     default: 'ktlint'
+  file_glob:
+    description: Optionally defines a file glob to identify files to be checked
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
