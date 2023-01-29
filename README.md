@@ -1,5 +1,7 @@
 # GitHub Action: Run ktlint with reviewdog
 
+TEST
+
 This action runs [ktlint](https://ktlint.github.io/) with
 [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests
 to enforce best practices.
