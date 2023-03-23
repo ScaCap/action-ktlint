@@ -1,6 +1,6 @@
-name: 'Run ktlint with reviewdog'
-description: '🐶 Run ktlint with reviewdog on pull requests to enforce best practices'
-author: 'renatoabreu11 (ScaCap)'
+name: 'Run ktlint with reviewdog. Custom rulesets supported.'
+description: '🐶 Run ktlint with reviewdog on pull requests to enforce best practices. Supports custom rules JARs'
+author: 'berhram'
 
 inputs:
   github_token:
@@ -63,5 +63,5 @@ runs:
     - ${{ inputs.name }}
     - ${{ inputs.custom_rule_path }}
 branding:
-  icon: 'edit'
-  color: 'blue'
+  icon: 'smartphone'
+  color: 'green'
