@@ -32,10 +32,6 @@ inputs:
     description: Print files relative to the working directory
     required: false
     default: 'true'
-  android:
-    description: Run Ktlint with Android Kotlin Style Guide
-    required: false
-    default: 'false'
   baseline:
     description: Use a baseline configuration
     required: false
@@ -48,8 +44,8 @@ inputs:
     description: Reviewdog report name
     required: false
     default: 'ktlint'
-  file_glob:
-    description: Optionally defines a file glob to identify files to be checked
+  custom_rule_path:
+    description: Custom ruleset path
     required: false
     default: ''
 runs:
@@ -62,10 +58,10 @@ runs:
     - ${{ inputs.fail_on_error }}
     - ${{ inputs.filter_mode }}
     - ${{ inputs.relative }}
-    - ${{ inputs.android }}
     - ${{ inputs.baseline }}
     - ${{ inputs.ktlint_version }}
     - ${{ inputs.name }}
+    - ${{ inputs.custom_rule_path }}
 branding:
   icon: 'edit'
   color: 'blue'

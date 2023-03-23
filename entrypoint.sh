@@ -1,8 +1,8 @@
 #!/bin/sh
 
 export RELATIVE=
-export ANDROID=
 export BASELINE=
+export CUSTOM_RULE_PATH=
 
 if [ "$INPUT_KTLINT_VERSION" = "latest" ]; then
   curl -sSL https://api.github.com/repos/pinterest/ktlint/releases/latest --header "authorization: Bearer ${INPUT_GITHUB_TOKEN}" |
@@ -26,8 +26,8 @@ if [ ! -z "$INPUT_BASELINE" ]; then
   export BASELINE="--baseline=${INPUT_BASELINE}"
 fi
 
-if [ "$INPUT_ANDROID" = true ]; then
-  export ANDROID=--android
+if [ "$INPUT_CUSTOM_RULE_PATH" ]; then
+  export CUSTOM_RULE_PATH="--ruleset=${INPUT_CUSTOM_RULE_PATH}"
 fi
 
 cd "$GITHUB_WORKSPACE"
@@ -38,7 +38,7 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 echo ktlint version: "$(ktlint --version)"
 
-ktlint --reporter=checkstyle $RELATIVE $ANDROID $BASELINE $INPUT_FILE_GLOB |
+ktlint --reporter=checkstyle $RELATIVE $CUSTOM_RULE_PATH --android $BASELINE |
   reviewdog -f=checkstyle \
     -name="${INPUT_NAME}" \
     -reporter="${INPUT_REPORTER}" \
