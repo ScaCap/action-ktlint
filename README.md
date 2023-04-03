@@ -71,6 +71,16 @@ Optional. Runs checks against the baseline file provided.
 Optional. Defines the [ktlint](https://ktlint.github.io/) version to use.
 The default value is `latest`.
 
+### `name`
+
+Optional. Reviewdog report name. See [checkstyle-format](https://github.com/reviewdog/reviewdog/tree/master#checkstyle-format) for details.
+The default value is `ktlint`.
+
+### `file_glob`
+
+Optional. Defines a file glob to identify files to be checked.
+The default value is an empty string.
+
 ## Example usage
 
 ```yml
