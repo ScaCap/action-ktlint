@@ -52,6 +52,10 @@ inputs:
     description: Optionally defines a file glob to identify files to be checked
     required: false
     default: ''
+  custom_rule_path:
+    description: Path to custom rule set JAR
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -66,6 +70,7 @@ runs:
     - ${{ inputs.baseline }}
     - ${{ inputs.ktlint_version }}
     - ${{ inputs.name }}
+    - ${{ inputs.custom_rule_path }}
 branding:
   icon: 'edit'
   color: 'blue'

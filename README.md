@@ -81,6 +81,10 @@ The default value is `ktlint`.
 Optional. Defines a file glob to identify files to be checked.
 The default value is an empty string.
 
+### `custom_rule_path`
+
+Optional. Provides path to JAR file with custom rules. The default value is an empty string.
+
 ## Example usage
 
 ```yml
