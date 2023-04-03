@@ -85,7 +85,6 @@ The default value is an empty string.
 
 Optional. Provides path to JAR file with custom rules. The default value is an empty string.
 
-=======
 ## Example usage
 
 ```yml
