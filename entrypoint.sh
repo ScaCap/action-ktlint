@@ -15,8 +15,8 @@ if [ "$INPUT_KTLINT_VERSION" = "latest" ]; then
     chmod a+x ktlint && \
     mv ktlint /usr/local/bin/
 else
-  curl -sSLO https://github.com/pinterest/ktlint/releases/download/"${INPUT_KTLINT_VERSION}"/ktlint &&
-    chmod a+x ktlint &&
+  curl -sSLO https://github.com/pinterest/ktlint/releases/download/"${INPUT_KTLINT_VERSION}"/ktlint && \
+    chmod a+x ktlint && \
     mv ktlint /usr/local/bin/
 fi
 
