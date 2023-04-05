@@ -5,7 +5,6 @@ export ANDROID=
 export BASELINE=
 export CUSTOM_RULE_PATH=
 
-echo "INPUT_KTLINT_VERSION=${INPUT_KTLINT_VERSION}"
 if [ "$INPUT_KTLINT_VERSION" = "latest" ]; then
   curl -sSL https://api.github.com/repos/pinterest/ktlint/releases/latest  | \
     grep "browser_download_url.*ktlint\"" | \
