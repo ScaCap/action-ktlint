@@ -27,6 +27,10 @@ if [ ! -z "$INPUT_BASELINE" ]; then
   export BASELINE="--baseline=${INPUT_BASELINE}"
 fi
 
+if [ "$INPUT_ANDROID" = true ]; then
+  export ANDROID=--android
+fi
+
 if [ "$INPUT_CUSTOM_RULE_PATH" ]; then
   export CUSTOM_RULE_PATH="--ruleset=${INPUT_CUSTOM_RULE_PATH}"
 fi
@@ -37,20 +41,7 @@ git config --global --add safe.directory $GITHUB_WORKSPACE
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-ktlint_version=$(ktlint --version)
-echo "ktlint version: $ktlint_version"
-
-if [ "$(printf '%s\n' "0.49.0" "$ktlint_version" | sort -V | head -n1)" = "0.49.0" ]; then
-  if [ "$INPUT_ANDROID" = true ]; then
-    export ANDROID="--code-style=android_studio"
-  else
-    export ANDROID="--code-style=intellij_idea"
-  fi
-else
-  if [ "$INPUT_ANDROID" = true ]; then
-    export ANDROID=--android
-  fi
-fi
+echo ktlint version: "$(ktlint --version)"
 
 ktlint --reporter=checkstyle $CUSTOM_RULE_PATH $RELATIVE $ANDROID $BASELINE $INPUT_FILE_GLOB |
   reviewdog -f=checkstyle \
@@ -59,4 +50,3 @@ ktlint --reporter=checkstyle $CUSTOM_RULE_PATH $RELATIVE $ANDROID $BASELINE $INP
     -level="${INPUT_LEVEL}" \
     -filter-mode="${INPUT_FILTER_MODE}" \
     -fail-on-error="${INPUT_FAIL_ON_ERROR}"
-
