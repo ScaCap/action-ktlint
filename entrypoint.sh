@@ -37,10 +37,13 @@ ktlint_version=$(ktlint --version)
 echo "ktlint version: $ktlint_version"
 
 if [ "$(printf '%s\n' "0.49.1" "$ktlint_version" | sort -V | head -n1)" = "0.49.1" ]; then
-  if [ "$INPUT_ANDROID" = true ]; then
-    export ANDROID="--code-style=android_studio"
-  else
-    export ANDROID="--code-style=intellij_idea"
+  # --code-style is deprecated since 1.0.1 and .editorconfig needs to be used: https://pinterest.github.io/ktlint/latest/rules/code-styles/
+  if [ "$(printf '%s\n' "1.0.0" "$ktlint_version" | sort -V | tail -n1)" = "1.0.0" ]; then
+    if [ "$INPUT_ANDROID" = true ]; then
+      export ANDROID="--code-style=android_studio"
+    else
+      export ANDROID="--code-style=intellij_idea"
+    fi
   fi
 else
   if [ "$INPUT_ANDROID" = true ]; then
@@ -55,4 +58,3 @@ ktlint --reporter=checkstyle $CUSTOM_RULE_PATH $RELATIVE $ANDROID $BASELINE $INP
     -level="${INPUT_LEVEL}" \
     -filter-mode="${INPUT_FILTER_MODE}" \
     -fail-on-error="${INPUT_FAIL_ON_ERROR}"
-

@@ -57,10 +57,19 @@ See reviewdog fail on error [documentation](https://github.com/reviewdog/reviewd
 Optional. Print files relative to the working directory [`true`/`false`]
 The default value is true.
 
-### `android`
+### `android` (deprecated)
 
 Optional. Runs KtLint with [Android Kotlin Style Guide](https://android.github.io/kotlin-guides/style.html) [`true`/`false`]
 The default value is false.
+
+Note: this field has no effect if `ktlint_version` is 1.0.1 or later. `code-style` command-line argument is deprecated in ktlint. Instead, `ktlint_code_style` property in `.editorconfig` 
+needs to be used. Example:
+```editorconfig
+[*.{kt,kts}]
+ktlint_code_style = android_studio
+```
+
+More in https://pinterest.github.io/ktlint/latest/rules/code-styles/
 
 ### `baseline`
 
