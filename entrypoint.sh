@@ -51,6 +51,8 @@ else
   fi
 fi
 
+echo "ANDROID=$ANDROID"
+
 ktlint --reporter=checkstyle $CUSTOM_RULE_PATH $RELATIVE $ANDROID $BASELINE $INPUT_FILE_GLOB |
   reviewdog -f=checkstyle \
     -name="${INPUT_NAME}" \
