@@ -36,8 +36,10 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 ktlint_version=$(ktlint --version)
 echo "ktlint version: $ktlint_version"
 
+# ktlint_version > 0.49.1
 if [ "$(printf '%s\n' "0.49.1" "$ktlint_version" | sort -V | head -n1)" = "0.49.1" ]; then
   # --code-style is deprecated since 1.0.1 and .editorconfig needs to be used: https://pinterest.github.io/ktlint/latest/rules/code-styles/
+  # ktlint_version <= 1.0.0
   if [ "$(printf '%s\n' "1.0.0" "$ktlint_version" | sort -V | tail -n1)" = "1.0.0" ]; then
     if [ "$INPUT_ANDROID" = true ]; then
       export ANDROID="--code-style=android_studio"
@@ -50,6 +52,9 @@ else
     export ANDROID=--android
   fi
 fi
+
+echo "ANDROID: $ANDROID"
+echo "command: ktlint --reporter=checkstyle $CUSTOM_RULE_PATH $RELATIVE $ANDROID $BASELINE $INPUT_FILE_GLOB"
 
 ktlint --reporter=checkstyle $CUSTOM_RULE_PATH $RELATIVE $ANDROID $BASELINE $INPUT_FILE_GLOB |
   reviewdog -f=checkstyle \
