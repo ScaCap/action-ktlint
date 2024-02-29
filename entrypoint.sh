@@ -34,6 +34,10 @@ git config --global --add safe.directory $GITHUB_WORKSPACE
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 ktlint_version=$(ktlint --version)
+# In newer ktlint versions, the command `ktlint --version` returns "ktlint version x.y.z" and we need to remove "ktlint version " from the string
+ktlint_version=${ktlint_version#"ktlint version "}
+
+
 echo "ktlint version: $ktlint_version"
 
 # ktlint_version > 0.49.1
@@ -54,9 +58,6 @@ else
     export ANDROID=--android
   fi
 fi
-
-echo "ANDROID: $ANDROID"
-echo "command: ktlint --reporter=checkstyle $CUSTOM_RULE_PATH $RELATIVE $ANDROID $BASELINE $INPUT_FILE_GLOB"
 
 ktlint --reporter=checkstyle $CUSTOM_RULE_PATH $RELATIVE $ANDROID $BASELINE $INPUT_FILE_GLOB |
   reviewdog -f=checkstyle \
