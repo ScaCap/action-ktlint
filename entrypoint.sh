@@ -57,7 +57,7 @@ else
 fi
 
 ktlint --reporter=checkstyle $CUSTOM_RULE_PATH $RELATIVE $ANDROID $BASELINE $INPUT_FILE_GLOB |
-    reviewdog -f=checkstyle \
+  reviewdog -f=checkstyle \
     -diff="git diff FETCH_HEAD" \
     -name="${INPUT_NAME}" \
     -reporter="${INPUT_REPORTER}" \
