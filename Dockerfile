@@ -1,4 +1,4 @@
-FROM alpine:3.17.0
+FROM ghcr.io/linuxcontainers/alpine:3.17
 
 ENV REVIEWDOG_VERSION=v0.19.0
 
