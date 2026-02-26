@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxcontainers/alpine:3.17
+FROM 595382802897.dkr.ecr.eu-central-1.amazonaws.com/ghcr-io/linuxcontainers/alpine:3.17
 
 ENV REVIEWDOG_VERSION=v0.19.0
 
