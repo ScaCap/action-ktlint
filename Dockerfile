@@ -1,6 +1,6 @@
 FROM ghcr.io/linuxcontainers/alpine:3.17
 
-ENV REVIEWDOG_VERSION=v0.21.3
+ENV REVIEWDOG_VERSION=v0.19.0
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 
